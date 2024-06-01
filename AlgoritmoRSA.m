@@ -2,6 +2,8 @@
 
 [p, q, e, d, n, z] = GeneradorClavesRSA();
 
+[
+
 # Imprimo las claves pública y privada
 fprintf('\nLa clave pública es(%d,%d)', e, n);
 fprintf('\nLa clave privada es (%d,%d)', d, n);
