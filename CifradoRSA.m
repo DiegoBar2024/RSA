@@ -1,4 +1,8 @@
-function [c] = CifradoRSA(e,n)
+# Ésta función lleva a cabo el cifrado RSA
+# Entradas: Clave publica (e,n)
+# Salida: Mensaje cifrado en ASCII
+
+function [c_ASCII] = CifradoRSA(e,n)
 
   # Pido al usuario un mensaje de texto de entrada
   m = input("Ingrese el mensaje a cifrar: ", "s");
@@ -9,18 +13,34 @@ function [c] = CifradoRSA(e,n)
   # Creo un vector en el cual voy a almacenar el valor ASCII del mensaje cifrado
   c_ASCII = [];
 
+  # Hago el pasaje del número e a representación binaria
+  e_BIN = dec2bin(e);
+
   # Itero caracter por caracter ASCII del mensaje cifrándolo uno por uno
-  for i = m_ASCII
+  for (M = m_ASCII)
 
-    # Aplico la expresión de cifrado
-    c_CARACTER = mod(i ^ e, n);
+    # Seteo la variable C a 1
+    C = 1;
 
-    # Agrego el caracter cifrado a la lista
-    c_ASCII = [c_ASCII, c_CARACTER];
+    # Itero para cada uno de los bits de e_BIN
+    for (e_i = e_BIN)
+
+      # Seteo el C como el resto de dividir C^2 entre n
+      C = mod(C ^ 2, n);
+
+      # Si e_i = 1 entonces seteo C como el resto de dividir C * M entre n
+      if (e_i == '1')
+
+        # Seteo el C con el valor correspondiente
+        C = mod(C * M, n);
+
+      endif
+
+    endfor
+
+    # Agrego el caracter cifrado a la lista de caracteres cifrados
+    c_ASCII = [c_ASCII, C];
 
   endfor
-
-  # Construyo el texto cifrado en base a la cadena ASCII
-  # c = char(c_ASCII);
 
 endfunction
