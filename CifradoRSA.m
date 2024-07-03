@@ -2,10 +2,7 @@
 # Entradas: Clave publica (e,n)
 # Salida: Mensaje cifrado en ASCII
 
-function [c_ASCII] = CifradoRSA(e,n)
-
-  # Pido al usuario un mensaje de texto de entrada
-  m = input("Ingrese el mensaje a cifrar: ", "s");
+function c_ASCII = CifradoRSA(e, n, m)
 
   # Transformo cada uno de los caracteres del mensaje de entrada a ASCII
   m_ASCII = m - 0;

@@ -2,7 +2,7 @@
 # Entradas: Clave privada (d,n) y texto cifrado C_ASCII
 # Salida: Mensaje original en texto plano m
 
-function [m] = DescifradoRSA(c_ASCII, d, n)
+function m = DescifradoRSA(c_ASCII, d, n)
 
   # Creo el vector en donde voy a guardar la versión ASCII del mensaje original
   m_ASCII = [];
